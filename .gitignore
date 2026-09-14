@@ -30,3 +30,4 @@ faiss_index/
 # OS Generated Files
 .DS_Store
 Thumbs.
+cmd_summary/
