@@ -1,0 +1,32 @@
+# Python / Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+ENV/
+
+# Environment Variables & Secrets (هام جداً لحماية API Keys)
+.env
+.env.local
+.env.*.local
+*.pem
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data & Vector Databases (خاص بمشاريع الـ RAG)
+*.db
+*.sqlite3
+chroma_db/
+faiss_index/
+.vector_store/
+*.log
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
