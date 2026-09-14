@@ -31,4 +31,5 @@ faiss_index/
 .DS_Store
 Thumbs.
 
-cmd_summary/
+cmd_summary/ 
+
