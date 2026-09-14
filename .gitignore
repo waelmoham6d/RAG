@@ -29,4 +29,6 @@ faiss_index/
 
 # OS Generated Files
 .DS_Store
-Thumbs.db
+Thumbs.
+
+cmd_summary/
