@@ -1,5 +1,0 @@
-# في PowerShell (Windows)
-New-Item -Path "data/raw_data/.gitkeep" -ItemType File -Force
-
-# أو باستخدام Bash / Git Bash
-touch data/raw_data/.gitkeep
