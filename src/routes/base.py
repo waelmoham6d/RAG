@@ -1,30 +1,19 @@
-from fastapi import APIRouter
-import os
-
+from fastapi import APIRouter ,FastAPI,Depends
+from helpers import Settings,get_settings
 base_router=APIRouter(
-    prefix='/api/v1',tags=['api_v1'])
-
-@base_router.get('/first',) # اللي جوا الجت بيتضاف بعد ال /api/v1
-async def welcome():
-    app_name=os.getenv('APP_NAME')
-    app_version=os.getenv('APP_VESROIN')
-    
-    return {
-        'app name':app_name,
-        'app version':app_version
-    }
-
-@base_router.get('/second')
-async def calculate():
-    
-    return '10+5=15'
-
-
-advanced_router=APIRouter(
-    prefix='/api/v1/adv'
+    prefix='/api/v1',
+    tags=['api_v1']
 )
 
+@base_router.get('/')
+async def welcome(app_settings:Settings = Depends(get_settings)):
+    app_name=app_settings.APP_NAME
+    app_version=app_settings.APP_NAME
+    
+    return {
+        'App Name:':app_name
+        ,'App version:':app_version
+            }
+    
+    
 
-@advanced_router.get('/third',tags=['adv'])
-async def make_prompt():
-    return 'prompt'
