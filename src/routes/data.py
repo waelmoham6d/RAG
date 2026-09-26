@@ -105,8 +105,8 @@ async def process_endpoint(project_id:str,process_request:ProcessRequest,request
 
     file_chunks_records=[
         DataChunk(
-            chunk_text=chunk.text,
-                chunk_metadata=chunk.metadatas,
+            chunk_text=chunk.page_content,
+                chunk_metadata=chunk.metadata,
                 chunk_order=i+1,
                 chunk_project_id=project.id
     

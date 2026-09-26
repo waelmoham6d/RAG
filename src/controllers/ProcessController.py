@@ -16,23 +16,26 @@ class ProcessController(BaseController):
         return os.path.splitext(file_id)[-1]
     
     def get_file_loader(self,file_id):
-        file_extension=self.get_file_extension(file_id=file_id)
+        self.file_extension=self.get_file_extension(file_id=file_id)
         file_path=os.path.join(
             self.project_path,
             file_id
         )
         
-        if file_extension == ProcessingEnum.TXT.value:
+        
+        if self.file_extension in [ProcessingEnum.TXT.value,ProcessingEnum.MD.value]:
             
             return TextLoader(file_path=file_path,encoding='utf-8')
-            
-        
-        elif file_extension == ProcessingEnum.PDF.value:
+ 
+ 
+        elif self.file_extension == ProcessingEnum.PDF.value:
             
             return PyMuPDFLoader(file_path=file_path)
-
-        return None
+            
     
+        return None
+
+
     def get_file_content(self,file_id):
 
         loader=self.get_file_loader(file_id=file_id)
@@ -41,11 +44,12 @@ class ProcessController(BaseController):
     def process_file_content(self,file_id:str,chunk_size:int,overlap_size:int ):
         
         file_content=self.get_file_content(file_id=file_id)
+        
         text_spliter=RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,
             chunk_overlap=overlap_size,
-            length_function=len )
-        
+            length_function=len )            
+            
         file_content_texts=[
             rec.page_content 
             for rec in file_content
@@ -62,55 +66,4 @@ class ProcessController(BaseController):
         
         return chunks
     
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
