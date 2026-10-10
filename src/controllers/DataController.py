@@ -9,7 +9,7 @@ class DataController(BaseController):
         super().__init__()
         self.scale_size=1048576
         
-    def validate_uploaded_file(self,file:UploadFile, project_id: str):
+    def validate_uploaded_file(self,file:UploadFile):
         if file.content_type not in self.app_settings.FILE_ALLOWED_TYPES:
             return False,ResponseSignal.FILE_TYPE_NOT_SUPPORTED.value
         
@@ -18,7 +18,7 @@ class DataController(BaseController):
         
         return True,ResponseSignal.FILE_UPLOAD_SUCCESS.value
     
-    
+
     def generate_unique_file_path(self,project_id:str,orig_file_name):
         
         key_randome=self.generate_random_string()
