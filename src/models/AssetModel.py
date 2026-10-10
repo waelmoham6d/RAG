@@ -7,6 +7,7 @@ from .db_schemes  import Asset
 class AssetModel(BaseDataModel):
     def __init__(self, db_client):
         super().__init__(db_client)
+        self.collection=self.db_client[DataBaseEnum.COLLECTION_ASSET_NAME.value]
         
         
     @classmethod
@@ -17,7 +18,7 @@ class AssetModel(BaseDataModel):
     
     
     async def init_collection(self):
-        all_collection=self.db_client.list_collection_names()
+        all_collection= await self.db_client.list_collection_names()
         if DataBaseEnum.COLLECTION_ASSET_NAME.value not in all_collection:
             self.collection=self.db_client[DataBaseEnum.COLLECTION_ASSET_NAME.value]
             indexes=Asset.get_indexes()
@@ -35,7 +36,7 @@ class AssetModel(BaseDataModel):
     
     
     async def get_all_project_assets(self, asset_project_id : str , asset_type : str):
-        records=self.collection.find({
+        records= await self.collection.find({
             "asset_project_id":ObjectId(asset_project_id) if isinstance(asset_project_id,str) else asset_project_id ,
             "asset_type":asset_type
         }).to_list(lenght=None)
@@ -47,7 +48,7 @@ class AssetModel(BaseDataModel):
         
         
     async def get_asset_record(self,asset_project_id : str , asset_name : str):
-        record=self.collection.find({
+        record= await self.collection.find({
             "asset_project_id": ObjectId(asset_project_id) if isinstance(asset_project_id,str) else asset_project_id,
             "asset_name":asset_name
             
