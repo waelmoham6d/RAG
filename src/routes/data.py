@@ -87,7 +87,7 @@ async def upload_data(request: Request , project_id: str , file: UploadFile ,
     return JSONResponse(
         content={
             'signal':ResponseSignal.FILE_UPLOAD_SUCCESS.value,
-            'file_id':str(asset_record.id)
+            'file_id':asset_record.asset_name
         }
     )
     
@@ -175,6 +175,7 @@ async def process_endpoint(request: Request ,project_id: str ,process_request: P
             continue
         
         file_chunks=process_controller.process_file_content(
+            file_content=file_content,
             file_id=file_id
             ,chunk_size=chunk_size
             ,overlap_size=overlap_size
