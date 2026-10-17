@@ -11,11 +11,7 @@ import os
 from .schemes import ProcessRequest
 
 
-
-
-
-
-logger=logging.Logger('uvicorn.error')
+logger=logging.getLogger('uvicorn.error')
 
 data_router=APIRouter(
     prefix="/api/v1/data"
