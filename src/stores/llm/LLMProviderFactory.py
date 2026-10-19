@@ -1,5 +1,5 @@
 from .LLMEnums import LLMEnums
-from .providers import OpenAIProvider,CoHereProvider
+from .providers import OpenAIProvider,CoHereProvider,GeminiProvider,NvidiaProvider
 
 
 class LLMProviderFactory:
@@ -11,6 +11,24 @@ class LLMProviderFactory:
             return OpenAIProvider(
                 api_key=self.config.OPENAI_API_KEY,
                 api_url=self.config.OPENAI_API_URL,
+                default_max_input_characters=self.config.INPUT_DEFAULT_MAX_CHARACTERS,
+                default_generatoin_max_output_tokens=self.config.GENERATION_DEFAULT_MAX_TOKENS,
+                default_generation_temperature=self.config.GENERATION_DEFAULT_TEMPERATURE
+            )
+            
+        if Provider==LLMEnums.NVIDIA.value:
+            return NvidiaProvider(
+                api_key=self.config.NVIDIA_API_KEY,
+                api_url=self.config.NVIDIA_API_URL,
+                default_max_input_characters=self.config.INPUT_DEFAULT_MAX_CHARACTERS,
+                default_generatoin_max_output_tokens=self.config.GENERATION_DEFAULT_MAX_TOKENS,
+                default_generation_temperature=self.config.GENERATION_DEFAULT_TEMPERATURE
+            )
+            
+        if Provider==LLMEnums.GEMINI.value:
+            return GeminiProvider(
+                api_key=self.config.GEMINI_API_KEY,
+                api_url=self.config.GEMINI_API_URL,
                 default_max_input_characters=self.config.INPUT_DEFAULT_MAX_CHARACTERS,
                 default_generatoin_max_output_tokens=self.config.GENERATION_DEFAULT_MAX_TOKENS,
                 default_generation_temperature=self.config.GENERATION_DEFAULT_TEMPERATURE

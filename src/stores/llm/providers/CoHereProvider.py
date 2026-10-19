@@ -78,11 +78,11 @@ class CoHereProvider(LLMInterface):
 
     def embed_text(self,text: str,document_type: str = None):
         
-        if self.client:
+        if not self.client:
             self.logger.error('CoHere client was not set')
             return None
         
-        if self.embedding_model_id:
+        if not self.embedding_model_id:
             self.logger.error('Embedding model for CoHere was not set')
             return None
         
@@ -112,10 +112,5 @@ class CoHereProvider(LLMInterface):
             'role':role,
             'text':self.process_text(prompt),
         }
-
-
-
-
-
 
 
