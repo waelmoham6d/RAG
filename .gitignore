@@ -19,7 +19,7 @@ settings.json
 .idea/
 *.swp
 *.swo
-
+.claude
 # Data & Vector Databases (خاص بمشاريع الـ RAG)
 *.db
 *.sqlite3
