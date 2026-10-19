@@ -1,0 +1,42 @@
+# Python / Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+ENV/
+# Environment Variables & Secrets (هام جداً لحماية API Keys)
+opencode.json
+.env
+.env.local
+.env.*.local
+*.pem
+
+# IDEs & Editors
+settings.json
+.vscode/
+.idea/
+*.swp
+*.swo
+.claude
+# Data & Vector Databases (خاص بمشاريع الـ RAG)
+*.db
+*.sqlite3
+chroma_db/
+faiss_index/
+.vector_store/
+*.log
+
+# OS Generated Files
+.DS_Store
+Thumbs.
+
+../cmd_summary/ 
+
+/assets/
+.vscode/
+.vscode/settings.json
+.vscode/settings.json
+.vscode/settings.json
+.vscode/settings.json
