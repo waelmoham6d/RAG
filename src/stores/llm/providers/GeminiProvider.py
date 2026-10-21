@@ -14,7 +14,7 @@ class GeminiProvider(LLMInterface):
                 default_generation_max_output_tokens: int = 1000,
                 default_generation_temperature: float = 0.1
                 ):
-        
+
         
         self.api_key=api_key
         self.api_url=api_url
@@ -26,6 +26,7 @@ class GeminiProvider(LLMInterface):
         
         self.generation_model_id=None
         self.embedding_model_id=None
+        self.embedding_size=None
         
         self.client=genai.Client(api_key=self.api_key)
         

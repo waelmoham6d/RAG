@@ -8,7 +8,7 @@ class Asset(BaseModel):
     asset_project_id:ObjectId 
     asset_type:str = Field(...,min_length=1)
     asset_name:str = Field(...,min_length=1)
-    asset_size:int = Field(default=None,gt=0)
+    asset_size:int = Field(ge=0,default=None)
     asset_config:dict = Field(default=None)
     asset_pushed_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     
